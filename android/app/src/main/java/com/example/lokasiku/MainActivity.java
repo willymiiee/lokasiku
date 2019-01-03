@@ -1,4 +1,4 @@
-package kpm.twin.lokasiku;
+package com.kpm.lokasiku;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
