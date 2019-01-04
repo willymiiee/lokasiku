@@ -65,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
     GeolocationStatus geolocationStatus  = await geolocator.checkGeolocationPermissionStatus();
     PermissionStatus result = await SimplePermissions.requestPermission(Permission.AccessFineLocation);
 
-    if (geolocationStatus == GeolocationStatus.granted || result == PermissionStatus.authorized) {
+    if (geolocationStatus == GeolocationStatus.granted && result == PermissionStatus.authorized) {
       Position position = await geolocator.getLastKnownPosition(desiredAccuracy: LocationAccuracy.high);
 
       if (position == null) {
@@ -81,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
           _place = pos;
         });
       }
-    } else if (geolocationStatus == GeolocationStatus.disabled) {
+    } else {
       setState(() {
         _loading = false;
       });
